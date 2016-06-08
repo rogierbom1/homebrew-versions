@@ -26,9 +26,11 @@ class Solr55 < Formula
     inreplace "#{bin}/post", '"$SOLR_TIP/dist"', "#{libexec}/dist"
 
     # Fix the paths in the sample solrconfig.xml files
-    Dir.glob(["#{prefix}/example/**/solrconfig.xml",
-      "#{prefix}/**/data_driven_schema_configs/**/solrconfig.xml",
-      "#{prefix}/**/sample_techproducts_configs/**/solrconfig.xml"]) do |f|
+    Dir.glob([
+               "#{prefix}/example/**/solrconfig.xml",
+               "#{prefix}/**/data_driven_schema_configs/**/solrconfig.xml",
+               "#{prefix}/**/sample_techproducts_configs/**/solrconfig.xml",
+             ]) do |f|
       inreplace f, ":../../../..}/", "}/libexec/"
     end
   end
